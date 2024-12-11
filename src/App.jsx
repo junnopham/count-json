@@ -18,14 +18,17 @@ function App() {
     if (jsonWorkflow) {
       const temp = countKeyOccurrences(JSON.parse(jsonWorkflow));
       setResultWorkflow(JSON.stringify(sortKeys(temp), "", 4));
-    }
+    }    
+  }
+
+  const check = () => {
+    setDisplay(false);
 
     if (resultTicket && resultWorkflow) {
       const is = deepEqual(JSON.parse(resultTicket), JSON.parse(resultWorkflow));
       setSame(is);
+      setDisplay(true);
     }
-
-    setDisplay(true);
   }
 
   const countKeyOccurrences = (obj, skipNumericKeys = false) => {
@@ -121,6 +124,7 @@ function App() {
           <Row>
             <Form.Group className="d-flex justify-content-md-center mb-3" controlId="exampleForm.count">
               <Button variant="primary" onClick={count}>Count</Button>
+              <Button variant="primary" onClick={check}>Compare</Button>
             </Form.Group>
           </Row>
           {display && (<Row>
