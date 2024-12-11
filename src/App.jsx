@@ -10,6 +10,9 @@ function App() {
   const [display, setDisplay] = useState(false);
 
   const count = () => {
+    setDisplay(false);
+    setSame(false);
+
     if (jsonTicket) {
       const temp = countKeyOccurrences(JSON.parse(jsonTicket));
       setResultTicket(JSON.stringify(sortKeys(temp), "", 4));
@@ -123,7 +126,7 @@ function App() {
           </Row>
           <Row>
             <Form.Group className="d-flex justify-content-md-center mb-3" controlId="exampleForm.count">
-              <Button variant="primary" onClick={count}>Count</Button>
+              <Button variant="primary" className="me-2" onClick={count}>Count</Button>
               <Button variant="primary" onClick={check}>Compare</Button>
             </Form.Group>
           </Row>
